@@ -1,0 +1,147 @@
+{
+  "cases": [
+    {
+      "text": "Contact Person: Sarthak Malvadkar, Company Secretary and Compliance Officer; Telephone: + 91 20 4505 3237;",
+      "entities": [
+        {
+          "type": "NAME",
+          "value": "Sarthak Malvadkar",
+          "start": 16,
+          "end": 33
+        },
+        {
+          "type": "PHONE",
+          "value": "+ 91 20 4505 3237",
+          "start": 88,
+          "end": 105
+        }
+      ]
+    },
+    {
+      "text": "Telephone: +91 22 6807 7100 Email: ksh@icicisecurities.com Website: www.icicisecurities.com Investor grievance E-mail: customercare@icicisecurities.com",
+      "entities": [
+        {
+          "type": "PHONE",
+          "value": "+91 22 6807 7100",
+          "start": 11,
+          "end": 27
+        },
+        {
+          "type": "EMAIL",
+          "value": "ksh@icicisecurities.com",
+          "start": 35,
+          "end": 58
+        },
+        {
+          "type": "EMAIL",
+          "value": "customercare@icicisecurities.com",
+          "start": 119,
+          "end": 151
+        }
+      ]
+    },
+    {
+      "text": "E-mail: Sarthak.malvadkar@kshinterantional.com",
+      "entities": [
+        {
+          "type": "EMAIL",
+          "value": "Sarthak.malvadkar@kshinterantional.com",
+          "start": 8,
+          "end": 46
+        }
+      ]
+    },
+    {
+      "text": "Unless the context otherwise indicates, all references to “we”, “us”, “our”, “the Company”, and “our Company”, are references to KSH International Limited, a company incorporated on July 30, 1979 under the Companies Act, 1956 and having its Registered Office at 11/3, 11/4 and 11/5, Village Birdewadi, Chakan Taluka - Khed, Pune – 410 501, Maharashtra, India and its Corporate Office at 201, Tower 2, Montreal Business Centre, Off Pallod Farms, Baner, Pune – 411 045, Maharashtra, India.",
+      "entities": [
+        {
+          "type": "COMPANY",
+          "value": "KSH International Limited",
+          "start": 129,
+          "end": 154
+        },
+        {
+          "type": "ADDRESS",
+          "value": "11/3, 11/4 and 11/5, Village Birdewadi, Chakan Taluka - Khed, Pune – 410 501, Maharashtra, India",
+          "start": 262,
+          "end": 358
+        },
+        {
+          "type": "ADDRESS",
+          "value": "201, Tower 2, Montreal Business Centre, Off Pallod Farms, Baner, Pune – 411 045, Maharashtra, India",
+          "start": 387,
+          "end": 486
+        }
+      ]
+    },
+    {
+      "text": "Our Company was originally incorporated as “Bhandary Metal Extrusion Private Limited” under the provisions of the Companies Act, 1956, pursuant to a certificate of incorporation dated July 30, 1979, issued by the Registrar of Companies, Maharashtra at Bombay.",
+      "entities": [
+        {
+          "type": "COMPANY",
+          "value": "Bhandary Metal Extrusion Private Limited",
+          "start": 44,
+          "end": 84
+        }
+      ]
+    },
+    {
+      "text": "The Company is expanding by setting up a plant at Plot No. F-223, Supa Parner Industrial Park, Mauje Palve Khurd, Taluka Parner, Dist – Ahmednagar, Maharashtra – 414 301.",
+      "entities": [
+        {
+          "type": "ADDRESS",
+          "value": "Plot No. F-223, Supa Parner Industrial Park, Mauje Palve Khurd, Taluka Parner, Dist – Ahmednagar, Maharashtra – 414 301",
+          "start": 50,
+          "end": 169
+        }
+      ]
+    },
+    {
+      "text": "For QA testing purposes only: SSN on file is 123-45-6789. Card used for the deposit was 4111 1111 1111 1111. The server access log recorded IP address 192.168.1.45 connecting to the investor portal. Applicant Rohan Dey (rohan.dey@gmail.com, +91 9876543210) has a Date of Birth: 10 December 1990.",
+      "entities": [
+        {
+          "type": "SSN",
+          "value": "123-45-6789",
+          "start": 45,
+          "end": 56
+        },
+        {
+          "type": "CREDIT_CARD",
+          "value": "4111 1111 1111 1111",
+          "start": 88,
+          "end": 107
+        },
+        {
+          "type": "IP_ADDRESS",
+          "value": "192.168.1.45",
+          "start": 151,
+          "end": 163
+        },
+        {
+          "type": "NAME",
+          "value": "Rohan Dey",
+          "start": 209,
+          "end": 218
+        },
+        {
+          "type": "EMAIL",
+          "value": "rohan.dey@gmail.com",
+          "start": 220,
+          "end": 239
+        },
+        {
+          "type": "PHONE",
+          "value": "+91 9876543210",
+          "start": 241,
+          "end": 255
+        },
+        {
+          "type": "DOB",
+          "value": "10 December 1990",
+          "start": 278,
+          "end": 294
+        }
+      ]
+    }
+  ]
+}

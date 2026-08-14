@@ -1,0 +1,802 @@
+{
+  "ADDRESS::11/3, 11/4 and 11/5 village birdewadi chakan taluka - khed pune – 410 501maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "11/3, 11/4 and 11/5 village birdewadi chakan taluka - khed pune – 410 501maharashtra, india",
+    "fake": "9751 Laury Rapid, Fort Clintonberg"
+  },
+  "ADDRESS::201, tower 2, montreal business centre, off pallod farms, baner pune – 411 045maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "201, tower 2, montreal business centre, off pallod farms, baner pune – 411 045maharashtra, india",
+    "fake": "54261 Pearl Drives, Lionelville"
+  },
+  "COMPANY::sarthak malvadkar company": {
+    "type": "COMPANY",
+    "real": "sarthak malvadkar company",
+    "fake": "Schowalter-Haag - Kiehn Limited"
+  },
+  "EMAIL::cs.connect@kshinternational.com": {
+    "type": "EMAIL",
+    "real": "cs.connect@kshinternational.com",
+    "fake": "ana.olson@example.com"
+  },
+  "PHONE::91 20 45053237": {
+    "type": "PHONE",
+    "real": "91 20 45053237",
+    "fake": "+91 1979859010"
+  },
+  "COMPANY::pandit llp": {
+    "type": "COMPANY",
+    "real": "pandit llp",
+    "fake": "Shields - Littel Limited"
+  },
+  "COMPANY::bse limited": {
+    "type": "COMPANY",
+    "real": "bse limited",
+    "fake": "Yost - Abshire Limited"
+  },
+  "COMPANY::india limited": {
+    "type": "COMPANY",
+    "real": "india limited",
+    "fake": "Russel, Buckridge and Harris Limited"
+  },
+  "COMPANY::nuvama\twealth management limited": {
+    "type": "COMPANY",
+    "real": "nuvama\twealth management limited",
+    "fake": "Renner - Kozey Limited"
+  },
+  "EMAIL::ksh.ipo@nuvama.comtelephone": {
+    "type": "EMAIL",
+    "real": "ksh.ipo@nuvama.comtelephone",
+    "fake": "nico_kunde42@example.com"
+  },
+  "PHONE::+91 22 4009 4400": {
+    "type": "PHONE",
+    "real": "+91 22 4009 4400",
+    "fake": "+91 1063592472"
+  },
+  "COMPANY::icici\tsecurities limited": {
+    "type": "COMPANY",
+    "real": "icici\tsecurities limited",
+    "fake": "Ward - Swaniawski Limited"
+  },
+  "EMAIL::ksh@icicisecurities.comtelephone": {
+    "type": "EMAIL",
+    "real": "ksh@icicisecurities.comtelephone",
+    "fake": "steve.tremblay11@example.com"
+  },
+  "PHONE::+91 22 6807 7100": {
+    "type": "PHONE",
+    "real": "+91 22 6807 7100",
+    "fake": "+91 4880542139"
+  },
+  "COMPANY::mufg intime india private limited": {
+    "type": "COMPANY",
+    "real": "mufg intime india private limited",
+    "fake": "Hettinger - Fritsch-Kuphal Limited"
+  },
+  "COMPANY::formerly link intime india private limited": {
+    "type": "COMPANY",
+    "real": "formerly link intime india private limited",
+    "fake": "Monahan - Gottlieb Limited"
+  },
+  "EMAIL::kshinternational.ipo@in.mpms.mufg.com": {
+    "type": "EMAIL",
+    "real": "kshinternational.ipo@in.mpms.mufg.com",
+    "fake": "cecil23@example.com"
+  },
+  "COMPANY::bhandary metal extrusion private limited": {
+    "type": "COMPANY",
+    "real": "bhandary metal extrusion private limited",
+    "fake": "Leuschke Group Limited"
+  },
+  "COMPANY::ksh international private limited": {
+    "type": "COMPANY",
+    "real": "ksh international private limited",
+    "fake": "Bauch, Armstrong and O'Connell Limited"
+  },
+  "COMPANY::ksh international limited": {
+    "type": "COMPANY",
+    "real": "ksh international limited",
+    "fake": "Wehner - Bruen Limited"
+  },
+  "ADDRESS::registered office: 11/3, 11/4 and 11/5, village birdewadi, chakan taluka - khed, pune – 410 501, maharashtra, india;": {
+    "type": "ADDRESS",
+    "real": "registered office: 11/3, 11/4 and 11/5, village birdewadi, chakan taluka - khed, pune – 410 501, maharashtra, india;",
+    "fake": "826 N Walnut Street, Stacyside"
+  },
+  "ADDRESS::corporate office: 201, tower 2, montreal business centre, off pallod farms, baner, pune – 411 045, maharashtra, india;": {
+    "type": "ADDRESS",
+    "real": "corporate office: 201, tower 2, montreal business centre, off pallod farms, baner, pune – 411 045, maharashtra, india;",
+    "fake": "4378 Stoney Lane, Trompstead"
+  },
+  "NAME::sarthak malvadkar": {
+    "type": "NAME",
+    "real": "sarthak malvadkar",
+    "fake": "Martha Crooks"
+  },
+  "PHONE::91 20 4505 3237": {
+    "type": "PHONE",
+    "real": "91 20 4505 3237",
+    "fake": "+91 6627237686"
+  },
+  "EMAIL::ksh.ipo@nuvama.comwebsite": {
+    "type": "EMAIL",
+    "real": "ksh.ipo@nuvama.comwebsite",
+    "fake": "frederick.wiza@example.com"
+  },
+  "EMAIL::customerservice.mb@nuvama.comcontact": {
+    "type": "EMAIL",
+    "real": "customerservice.mb@nuvama.comcontact",
+    "fake": "kurt.reichert@example.com"
+  },
+  "NAME::lokesh shah": {
+    "type": "NAME",
+    "real": "lokesh shah",
+    "fake": "Velda Hilpert"
+  },
+  "EMAIL::ksh@icicisecurities.comwebsite": {
+    "type": "EMAIL",
+    "real": "ksh@icicisecurities.comwebsite",
+    "fake": "walter.grimes85@example.com"
+  },
+  "EMAIL::customercare@icicisecurities.comcontact": {
+    "type": "EMAIL",
+    "real": "customercare@icicisecurities.comcontact",
+    "fake": "thelma_boyer99@example.com"
+  },
+  "NAME::kishan rastogi": {
+    "type": "NAME",
+    "real": "kishan rastogi",
+    "fake": "Murl Prosacco"
+  },
+  "EMAIL::kshinternational.ipo@in.mpms.mufg.comwebsite": {
+    "type": "EMAIL",
+    "real": "kshinternational.ipo@in.mpms.mufg.comwebsite",
+    "fake": "providenci_langosh@example.com"
+  },
+  "EMAIL::kshinternational.ipo@in.mpms.mufg.comcontact": {
+    "type": "EMAIL",
+    "real": "kshinternational.ipo@in.mpms.mufg.comcontact",
+    "fake": "shyann_botsford@example.com"
+  },
+  "NAME::shanti gopalkrishnan": {
+    "type": "NAME",
+    "real": "shanti gopalkrishnan",
+    "fake": "Mr. Leland Bashirian"
+  },
+  "ADDRESS::unless the context otherwise indicates, all references to “we”, “us”, “our”, “the company”, and “our company”, are references to ksh international limited, a company incorporated on july 30, 1979 under the companies act, 1956 and having its registered office at 11/3, 11/4 and 11/5, village birdewadi, chakan taluka - khed, pune – 410 501, maharashtra, india and its corporate office at 201, tower 2, montreal business centre, off pallod farms, baner, pune – 411 045, maharashtra, india.": {
+    "type": "ADDRESS",
+    "real": "unless the context otherwise indicates, all references to “we”, “us”, “our”, “the company”, and “our company”, are references to ksh international limited, a company incorporated on july 30, 1979 under the companies act, 1956 and having its registered office at 11/3, 11/4 and 11/5, village birdewadi, chakan taluka - khed, pune – 410 501, maharashtra, india and its corporate office at 201, tower 2, montreal business centre, off pallod farms, baner, pune – 411 045, maharashtra, india.",
+    "fake": "57260 Manuel Ridge, Lynchburg"
+  },
+  "ADDRESS::ksh international limited, a public limited company incorporated under the companies act, 1956, having its registered office at 11/3, 11/4 and 11/5, village birdewadi, chakan taluka - khed, pune – 410 501, maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "ksh international limited, a public limited company incorporated under the companies act, 1956, having its registered office at 11/3, 11/4 and 11/5, village birdewadi, chakan taluka - khed, pune – 410 501, maharashtra, india",
+    "fake": "82400 The Willows, Cristburgh"
+  },
+  "COMPANY::advisory private limited": {
+    "type": "COMPANY",
+    "real": "advisory private limited",
+    "fake": "Goyette and Sons Limited"
+  },
+  "ADDRESS::the corporate office of our company located at 201, tower 2, montreal business centre, off pallod farms, baner, pune – 411 045, maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "the corporate office of our company located at 201, tower 2, montreal business centre, off pallod farms, baner, pune – 411 045, maharashtra, india",
+    "fake": "564 Adolph Corners, North Janyland"
+  },
+  "COMPANY::waterloo industrial park vi private limited": {
+    "type": "COMPANY",
+    "real": "waterloo industrial park vi private limited",
+    "fake": "Kerluke Inc Limited"
+  },
+  "COMPANY::waterloo motors private limited": {
+    "type": "COMPANY",
+    "real": "waterloo motors private limited",
+    "fake": "Hirthe LLC Limited"
+  },
+  "COMPANY::ksh project management services private limited": {
+    "type": "COMPANY",
+    "real": "ksh project management services private limited",
+    "fake": "Cruickshank Group Limited"
+  },
+  "COMPANY::ksh infra park vi private limited": {
+    "type": "COMPANY",
+    "real": "ksh infra park vi private limited",
+    "fake": "Weimann LLC Limited"
+  },
+  "COMPANY::ksh distriparks private limited": {
+    "type": "COMPANY",
+    "real": "ksh distriparks private limited",
+    "fake": "Lockman and Sons Limited"
+  },
+  "COMPANY::ksh integrated logistics private limited": {
+    "type": "COMPANY",
+    "real": "ksh integrated logistics private limited",
+    "fake": "Dietrich Group Limited"
+  },
+  "COMPANY::electricals private limited": {
+    "type": "COMPANY",
+    "real": "electricals private limited",
+    "fake": "Paucek - Sporer Limited"
+  },
+  "COMPANY::waterloo industrial park i private limited": {
+    "type": "COMPANY",
+    "real": "waterloo industrial park i private limited",
+    "fake": "Carroll - Thiel Limited"
+  },
+  "COMPANY::waterloo industrial park ii private limited": {
+    "type": "COMPANY",
+    "real": "waterloo industrial park ii private limited",
+    "fake": "Dare, Zboncak and Sanford Limited"
+  },
+  "COMPANY::waterloo industrial park iii private limited": {
+    "type": "COMPANY",
+    "real": "waterloo industrial park iii private limited",
+    "fake": "Keebler and Sons Limited"
+  },
+  "COMPANY::waterloo industrial park iv private limited": {
+    "type": "COMPANY",
+    "real": "waterloo industrial park iv private limited",
+    "fake": "Labadie, Tremblay and Ullrich Limited"
+  },
+  "COMPANY::waterloo industrial park v private limited": {
+    "type": "COMPANY",
+    "real": "waterloo industrial park v private limited",
+    "fake": "Wiegand-Marvin - Greenholt Limited"
+  },
+  "COMPANY::waterloo industrial park viii private limited": {
+    "type": "COMPANY",
+    "real": "waterloo industrial park viii private limited",
+    "fake": "Schiller - Kunde Limited"
+  },
+  "COMPANY::waterloo industrial park ix private limited": {
+    "type": "COMPANY",
+    "real": "waterloo industrial park ix private limited",
+    "fake": "Torphy - Conroy Limited"
+  },
+  "COMPANY::waterloo industrial park ix b private": {
+    "type": "COMPANY",
+    "real": "waterloo industrial park ix b private",
+    "fake": "Boehm, Schuster and Bogan Limited"
+  },
+  "COMPANY::ksh infra park iv private limited": {
+    "type": "COMPANY",
+    "real": "ksh infra park iv private limited",
+    "fake": "Schulist, Romaguera-Hirthe and MacGyver Limited"
+  },
+  "ADDRESS::the registered office of our company located at 11/3, 11/4 and 11/5, village birdewadi, chakan taluka-khed, pune – 410 501, maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "the registered office of our company located at 11/3, 11/4 and 11/5, village birdewadi, chakan taluka-khed, pune – 410 501, maharashtra, india",
+    "fake": "9140 Carroll Place, Hirthe-Granthaven"
+  },
+  "ADDRESS::j-25, taloja industrial area, village padghe, taluka panvel, raigad – 410 208, maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "j-25, taloja industrial area, village padghe, taluka panvel, raigad – 410 208, maharashtra, india",
+    "fake": "90908 Lueilwitz Walks, Jackelinefurt"
+  },
+  "ADDRESS::our manufacturing facility located at 11/3, 11/4 and 11/5, village birdewadi, chakan taluka - khed, pune – 410 501, maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "our manufacturing facility located at 11/3, 11/4 and 11/5, village birdewadi, chakan taluka - khed, pune – 410 501, maharashtra, india",
+    "fake": "9029 Market Place, Kohlerbury"
+  },
+  "ADDRESS::5, chakan industrial area, phase ii, village khalumbre, taluka khed, pune – 410 501, maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "5, chakan industrial area, phase ii, village khalumbre, taluka khed, pune – 410 501, maharashtra, india",
+    "fake": "1996 Paucek Crossing, Shoreline"
+  },
+  "COMPANY::nuvama wealth management limited": {
+    "type": "COMPANY",
+    "real": "nuvama wealth management limited",
+    "fake": "Johnson, Bayer and Schroeder Limited"
+  },
+  "COMPANY::icici securities limited": {
+    "type": "COMPANY",
+    "real": "icici securities limited",
+    "fake": "Homenick, Smitham and Goodwin Limited"
+  },
+  "COMPANY::hdfc bank limited": {
+    "type": "COMPANY",
+    "real": "hdfc bank limited",
+    "fake": "Zulauf - Runte Limited"
+  },
+  "COMPANY::care ratings limited": {
+    "type": "COMPANY",
+    "real": "care ratings limited",
+    "fake": "Klein, Moen-Fay and Herzog Limited"
+  },
+  "COMPANY::icici bank limited": {
+    "type": "COMPANY",
+    "real": "icici bank limited",
+    "fake": "Rutherford - Lueilwitz Limited"
+  },
+  "COMPANY::banking financial company": {
+    "type": "COMPANY",
+    "real": "banking financial company",
+    "fake": "Collier Group Limited"
+  },
+  "COMPANY::national payments corporation": {
+    "type": "COMPANY",
+    "real": "national payments corporation",
+    "fake": "Effertz, Heller and Kertzmann Limited"
+  },
+  "COMPANY::national securities depository limited": {
+    "type": "COMPANY",
+    "real": "national securities depository limited",
+    "fake": "Sawayn, Stoltenberg and Walter Limited"
+  },
+  "COMPANY::precision wires india limited": {
+    "type": "COMPANY",
+    "real": "precision wires india limited",
+    "fake": "Wuckert Inc Limited"
+  },
+  "COMPANY::solar energy corporation": {
+    "type": "COMPANY",
+    "real": "solar energy corporation",
+    "fake": "Blanda - Corwin Limited"
+  },
+  "COMPANY::malabar india fund limited": {
+    "type": "COMPANY",
+    "real": "malabar india fund limited",
+    "fake": "Hegmann - Orn Limited"
+  },
+  "COMPANY::kshdistriparksprivate limited": {
+    "type": "COMPANY",
+    "real": "kshdistriparksprivate limited",
+    "fake": "Cummings - Bogisich Limited"
+  },
+  "COMPANY::bharat bijlee limited": {
+    "type": "COMPANY",
+    "real": "bharat bijlee limited",
+    "fake": "Hickle - Batz Limited"
+  },
+  "COMPANY::industrial solutions limited": {
+    "type": "COMPANY",
+    "real": "industrial solutions limited",
+    "fake": "Swift, Gorczany and Denesik Limited"
+  },
+  "COMPANY::switchgear limited": {
+    "type": "COMPANY",
+    "real": "switchgear limited",
+    "fake": "Mosciski - Rogahn Limited"
+  },
+  "COMPANY::georgia transformer corporation": {
+    "type": "COMPANY",
+    "real": "georgia transformer corporation",
+    "fake": "Tremblay - Breitenberg Limited"
+  },
+  "COMPANY::nidec industrial automation india private limited": {
+    "type": "COMPANY",
+    "real": "nidec industrial automation india private limited",
+    "fake": "Glover Inc Limited"
+  },
+  "COMPANY::virginia transformer corporation": {
+    "type": "COMPANY",
+    "real": "virginia transformer corporation",
+    "fake": "Hansen - Medhurst Limited"
+  },
+  "COMPANY::cindus corporation": {
+    "type": "COMPANY",
+    "real": "cindus corporation",
+    "fake": "Bogisich, Rodriguez and Graham Limited"
+  },
+  "COMPANY::elantas beck india limited": {
+    "type": "COMPANY",
+    "real": "elantas beck india limited",
+    "fake": "Hermiston and Sons Limited"
+  },
+  "COMPANY::hindalco industries limited": {
+    "type": "COMPANY",
+    "real": "hindalco industries limited",
+    "fake": "Cremin Group Limited"
+  },
+  "COMPANY::savli copper products private limited": {
+    "type": "COMPANY",
+    "real": "savli copper products private limited",
+    "fake": "Daniel - Leffler Limited"
+  },
+  "COMPANY::vedanta limited": {
+    "type": "COMPANY",
+    "real": "vedanta limited",
+    "fake": "Jacobi and Sons Limited"
+  },
+  "COMPANY::investment private limited": {
+    "type": "COMPANY",
+    "real": "investment private limited",
+    "fake": "D'Amore, Lynch and Runte Limited"
+  },
+  "COMPANY::co llp": {
+    "type": "COMPANY",
+    "real": "co llp",
+    "fake": "Lang - Monahan Limited"
+  },
+  "COMPANY::practicing company": {
+    "type": "COMPANY",
+    "real": "practicing company",
+    "fake": "Kshlerin - Hauck Limited"
+  },
+  "ADDRESS::f-223, supa parner industrial park, mauje palve khurd, taluka parner, dist – ahmednagar, maharashtra – 414 301.": {
+    "type": "ADDRESS",
+    "real": "f-223, supa parner industrial park, mauje palve khurd, taluka parner, dist – ahmednagar, maharashtra – 414 301.",
+    "fake": "19382 Spruce Street, Gingershire"
+  },
+  "COMPANY::waterloo industrial park ix a private": {
+    "type": "COMPANY",
+    "real": "waterloo industrial park ix a private",
+    "fake": "Renner, Bergstrom and Spinka Limited"
+  },
+  "COMPANY::company ksh international limited": {
+    "type": "COMPANY",
+    "real": "company ksh international limited",
+    "fake": "Cruickshank - Ondricka Limited"
+  },
+  "ADDRESS::11/3, 11/4 and 11/5, village birdewadi chakan, taluka-khed": {
+    "type": "ADDRESS",
+    "real": "11/3, 11/4 and 11/5, village birdewadi chakan, taluka-khed",
+    "fake": "4838 Gutkowski Roads, Germainestad"
+  },
+  "ADDRESS::pune – 410 501": {
+    "type": "ADDRESS",
+    "real": "pune – 410 501",
+    "fake": "619 Schimmel Pass, Caleborough"
+  },
+  "ADDRESS::201, tower-2, montreal business centre off pallod farms, baner": {
+    "type": "ADDRESS",
+    "real": "201, tower-2, montreal business centre off pallod farms, baner",
+    "fake": "70578 Stamm Court, Port Muriel"
+  },
+  "ADDRESS::pcntda green building block a 1st and 2nd floor near akurdi railway station akurdi, pune – 411 044 maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "pcntda green building block a 1st and 2nd floor near akurdi railway station akurdi, pune – 411 044 maharashtra, india",
+    "fake": "665 Susie Orchard, Calliestead"
+  },
+  "ADDRESS::3 prabhat road, opposite pyc basketball court, deccan gymkhana, pune – 411 004 maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "3 prabhat road, opposite pyc basketball court, deccan gymkhana, pune – 411 004 maharashtra, india",
+    "fake": "6089 Quigley Crescent, Patrickshire"
+  },
+  "ADDRESS::12 buena monte, ncl co-operative housing society, panchvati, pashan, pune – 411 008, maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "12 buena monte, ncl co-operative housing society, panchvati, pashan, pune – 411 008, maharashtra, india",
+    "fake": "519 Center Avenue, Suffolk"
+  },
+  "ADDRESS::3, shivaji nagar, deccan gymkhana, pune – 411 004, maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "3, shivaji nagar, deccan gymkhana, pune – 411 004, maharashtra, india",
+    "fake": "6303 13th Street, South Fabiola"
+  },
+  "ADDRESS::3 prabhat road, opposite pyc basketball court, erandawane, deccan gymkhana, pune – 411 004 maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "3 prabhat road, opposite pyc basketball court, erandawane, deccan gymkhana, pune – 411 004 maharashtra, india",
+    "fake": "7424 Jasmine Valley, New Mathew"
+  },
+  "ADDRESS::pratik bunglow, senapati bapat road, behind sahara hotel, shivajinagar, model colony, pune – 411 016, maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "pratik bunglow, senapati bapat road, behind sahara hotel, shivajinagar, model colony, pune – 411 016, maharashtra, india",
+    "fake": "91409 Rohan Estates, Coon Rapids"
+  },
+  "ADDRESS::602, gopalkrupa apartment, bhonde colony, prabhat road, erandawane, pune – 411 004, maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "602, gopalkrupa apartment, bhonde colony, prabhat road, erandawane, pune – 411 004, maharashtra, india",
+    "fake": "14507 Jacobs Mount, East Garfieldboro"
+  },
+  "ADDRESS::a-259, jk road, minal residency, huzur, govindpura, bhopal – 462 023, madhya pradesh, india": {
+    "type": "ADDRESS",
+    "real": "a-259, jk road, minal residency, huzur, govindpura, bhopal – 462 023, madhya pradesh, india",
+    "fake": "4017 Feeney Points, North Marlonburgh"
+  },
+  "ADDRESS::a29, abhimanshree society, pashan road, pune – 411 008, maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "a29, abhimanshree society, pashan road, pune – 411 008, maharashtra, india",
+    "fake": "37883 Derby Road, Fort Dawn"
+  },
+  "ADDRESS::taluka khed, district pune – 410 501": {
+    "type": "ADDRESS",
+    "real": "taluka khed, district pune – 410 501",
+    "fake": "25488 McLaughlin Fords, Kertzmannboro"
+  },
+  "EMAIL::sarthak.malvadkar@kshinterantional.com": {
+    "type": "EMAIL",
+    "real": "sarthak.malvadkar@kshinterantional.com",
+    "fake": "brisa_tremblay42@example.com"
+  },
+  "ADDRESS::bandra east, mumbai – 400 051 maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "bandra east, mumbai – 400 051 maharashtra, india",
+    "fake": "56218 N Franklin Street, West Bernitastead"
+  },
+  "PHONE::+91 22 40094400": {
+    "type": "PHONE",
+    "real": "+91 22 40094400",
+    "fake": "+91 2568201985"
+  },
+  "EMAIL::ksh.ipo@nuvama.com": {
+    "type": "EMAIL",
+    "real": "ksh.ipo@nuvama.com",
+    "fake": "celestino_hoppe4@example.com"
+  },
+  "EMAIL::customerservice.mb@nuvama.com": {
+    "type": "EMAIL",
+    "real": "customerservice.mb@nuvama.com",
+    "fake": "levi.green71@example.com"
+  },
+  "ADDRESS::icici securities limited icici venture house appasaheb marathe marg prabhadevi, mumbai – 400 025 maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "icici securities limited icici venture house appasaheb marathe marg prabhadevi, mumbai – 400 025 maharashtra, india",
+    "fake": "5697 Louise Canyon, Randallland"
+  },
+  "EMAIL::ksh@icicisecurities.com": {
+    "type": "EMAIL",
+    "real": "ksh@icicisecurities.com",
+    "fake": "jensen79@example.com"
+  },
+  "EMAIL::customercare@icicisecurities.com": {
+    "type": "EMAIL",
+    "real": "customercare@icicisecurities.com",
+    "fake": "forest_collins44@example.com"
+  },
+  "PHONE::91 22 4009 4400": {
+    "type": "PHONE",
+    "real": "91 22 4009 4400",
+    "fake": "+91 5878668242"
+  },
+  "EMAIL::prakash.boricha@nuvama.com": {
+    "type": "EMAIL",
+    "real": "prakash.boricha@nuvama.com",
+    "fake": "alfonzo_davis91@example.com"
+  },
+  "EMAIL::sheetal.parab@nuvama.com": {
+    "type": "EMAIL",
+    "real": "sheetal.parab@nuvama.com",
+    "fake": "timothy_krajcik84@example.com"
+  },
+  "NAME::prakash boricha": {
+    "type": "NAME",
+    "real": "prakash boricha",
+    "fake": "Leonard Cartwright"
+  },
+  "ADDRESS::senapati bapat marg, lower parel (west) mumbai – 400 013": {
+    "type": "ADDRESS",
+    "real": "senapati bapat marg, lower parel (west) mumbai – 400 013",
+    "fake": "470 Emmalee Path, North Bethesda"
+  },
+  "EMAIL::ipo@trilegal.com": {
+    "type": "EMAIL",
+    "real": "ipo@trilegal.com",
+    "fake": "shelly79@example.com"
+  },
+  "PHONE::+91 22 4079 1000": {
+    "type": "PHONE",
+    "real": "+91 22 4079 1000",
+    "fake": "+91 3744689744"
+  },
+  "COMPANY::escrow collection bank hdfc bank limited": {
+    "type": "COMPANY",
+    "real": "escrow collection bank hdfc bank limited",
+    "fake": "Hermann, Feest and Yundt Limited"
+  },
+  "ADDRESS::next to kanjurmarg railway station, kanjurmarg (east) mumbai – 400042, maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "next to kanjurmarg railway station, kanjurmarg (east) mumbai – 400042, maharashtra, india",
+    "fake": "4629 Bramble Close, Jamarcusfurt"
+  },
+  "PHONE::+91 22 30752929": {
+    "type": "PHONE",
+    "real": "+91 22 30752929",
+    "fake": "+91 1929665212"
+  },
+  "PHONE::+91 22 30752928": {
+    "type": "PHONE",
+    "real": "+91 22 30752928",
+    "fake": "+91 1730989913"
+  },
+  "PHONE::+91 22 30752914": {
+    "type": "PHONE",
+    "real": "+91 22 30752914",
+    "fake": "+91 7618225550"
+  },
+  "EMAIL::siddharth.jadhav@hdfcbank.com": {
+    "type": "EMAIL",
+    "real": "siddharth.jadhav@hdfcbank.com",
+    "fake": "calvin_stoltenberg-schowalter55@example.com"
+  },
+  "EMAIL::sachin.gawade@hdfcbank.com": {
+    "type": "EMAIL",
+    "real": "sachin.gawade@hdfcbank.com",
+    "fake": "eileen.bode68@example.com"
+  },
+  "EMAIL::eric.bacha@hdfcbank.com": {
+    "type": "EMAIL",
+    "real": "eric.bacha@hdfcbank.com",
+    "fake": "jay_heidenreich56@example.com"
+  },
+  "EMAIL::tushar.gavankar@hdfcbank.com": {
+    "type": "EMAIL",
+    "real": "tushar.gavankar@hdfcbank.com",
+    "fake": "macey69@example.com"
+  },
+  "EMAIL::pravin.teli2@hdfcbank.com": {
+    "type": "EMAIL",
+    "real": "pravin.teli2@hdfcbank.com",
+    "fake": "carey_barrows@example.com"
+  },
+  "NAME::eric bacha": {
+    "type": "NAME",
+    "real": "eric bacha",
+    "fake": "Rolando Lang"
+  },
+  "EMAIL::ipocmg@icicibank.com": {
+    "type": "EMAIL",
+    "real": "ipocmg@icicibank.com",
+    "fake": "willy_nader77@example.com"
+  },
+  "NAME::varun badai": {
+    "type": "NAME",
+    "real": "varun badai",
+    "fake": "Wade Nader Sr."
+  },
+  "ADDRESS::pune – 411 038": {
+    "type": "ADDRESS",
+    "real": "pune – 411 038",
+    "fake": "703 Beach Road, Allyside"
+  },
+  "EMAIL::parag.pansare@kirtanepandit.com": {
+    "type": "EMAIL",
+    "real": "parag.pansare@kirtanepandit.com",
+    "fake": "narciso.bailey@example.com"
+  },
+  "PHONE::91 (20) 6729 5100": {
+    "type": "PHONE",
+    "real": "91 (20) 6729 5100",
+    "fake": "+91 7642944176"
+  },
+  "COMPANY::hdfc limited": {
+    "type": "COMPANY",
+    "real": "hdfc limited",
+    "fake": "O'Kon - Corwin-Kemmer Limited"
+  },
+  "EMAIL::parag.pansare@kirtanepandit.comtelephone": {
+    "type": "EMAIL",
+    "real": "parag.pansare@kirtanepandit.comtelephone",
+    "fake": "marc.wyman89@example.com"
+  },
+  "EMAIL::hingnetare@gmail.comfirm": {
+    "type": "EMAIL",
+    "real": "hingnetare@gmail.comfirm",
+    "fake": "marilyn18@example.com"
+  },
+  "ADDRESS::8th floor, onyx tower north main road": {
+    "type": "ADDRESS",
+    "real": "8th floor, onyx tower north main road",
+    "fake": "787 Waelchi Pass, Cassinchester"
+  },
+  "ADDRESS::koregaon park, pune – 411 001 maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "koregaon park, pune – 411 001 maharashtra, india",
+    "fake": "2405 Irving Branch, South Eldorachester"
+  },
+  "PHONE::+91 20 6606 4494": {
+    "type": "PHONE",
+    "real": "+91 20 6606 4494",
+    "fake": "+91 8704129146"
+  },
+  "NAME::hitesh ramani": {
+    "type": "NAME",
+    "real": "hitesh ramani",
+    "fake": "Adrian Larson"
+  },
+  "EMAIL::hitesh.ramani@citi.com": {
+    "type": "EMAIL",
+    "real": "hitesh.ramani@citi.com",
+    "fake": "belinda_mante80@example.com"
+  },
+  "ADDRESS::signature building, bhandarkar road shivaji nagar, pune – 411 004 maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "signature building, bhandarkar road shivaji nagar, pune – 411 004 maharashtra, india",
+    "fake": "16709 Santina Rapids, Galveston"
+  },
+  "PHONE::+91 20 2640 3100": {
+    "type": "PHONE",
+    "real": "+91 20 2640 3100",
+    "fake": "+91 8085846570"
+  },
+  "EMAIL::pro@eximbankindia.in": {
+    "type": "EMAIL",
+    "real": "pro@eximbankindia.in",
+    "fake": "charlene18@example.com"
+  },
+  "COMPANY::indusind bank limited": {
+    "type": "COMPANY",
+    "real": "indusind bank limited",
+    "fake": "Reichel Group Limited"
+  },
+  "ADDRESS::pune – 411 001": {
+    "type": "ADDRESS",
+    "real": "pune – 411 001",
+    "fake": "961 Beech Grove, West Minervafort"
+  },
+  "PHONE::+91-20-26234000": {
+    "type": "PHONE",
+    "real": "+91-20-26234000",
+    "fake": "+91 4339085474"
+  },
+  "EMAIL::sharmila.joshi@indusind.com": {
+    "type": "EMAIL",
+    "real": "sharmila.joshi@indusind.com",
+    "fake": "henriette.veum@example.com"
+  },
+  "ADDRESS::bund garden road, pune – 411 001 maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "bund garden road, pune – 411 001 maharashtra, india",
+    "fake": "279 Chauncey Summit, Isacmouth"
+  },
+  "PHONE::91 8879770456": {
+    "type": "PHONE",
+    "real": "91 8879770456",
+    "fake": "+91 3513926371"
+  },
+  "EMAIL::cherag.gyara@icicibank.com": {
+    "type": "EMAIL",
+    "real": "cherag.gyara@icicibank.com",
+    "fake": "david.leannon@example.com"
+  },
+  "PHONE::+91 20 6769 4648": {
+    "type": "PHONE",
+    "real": "+91 20 6769 4648",
+    "fake": "+91 2671107648"
+  },
+  "EMAIL::manisha.shukla@hdfcbank.com": {
+    "type": "EMAIL",
+    "real": "manisha.shukla@hdfcbank.com",
+    "fake": "samir53@example.com"
+  },
+  "ADDRESS::pune – 411 003": {
+    "type": "ADDRESS",
+    "real": "pune – 411 003",
+    "fake": "24935 Virgie Alley, Oklahoma City"
+  },
+  "PHONE::+91 20 2561 8211": {
+    "type": "PHONE",
+    "real": "+91 20 2561 8211",
+    "fake": "+91 8454610372"
+  },
+  "EMAIL::rm6.ifbpune@sbi.co.in": {
+    "type": "EMAIL",
+    "real": "rm6.ifbpune@sbi.co.in",
+    "fake": "ashtyn69@example.com"
+  },
+  "COMPANY::the federal bank limited": {
+    "type": "COMPANY",
+    "real": "the federal bank limited",
+    "fake": "Mosciski, Bartell and Padberg Limited"
+  },
+  "NAME::ashish mathew pulloor": {
+    "type": "NAME",
+    "real": "ashish mathew pulloor",
+    "fake": "Gonzalo Breitenberg"
+  },
+  "EMAIL::ashishmp@federalbank.co.in": {
+    "type": "EMAIL",
+    "real": "ashishmp@federalbank.co.in",
+    "fake": "wilbert73@example.com"
+  },
+  "COMPANY::bajaj finance limited": {
+    "type": "COMPANY",
+    "real": "bajaj finance limited",
+    "fake": "Schowalter and Sons Limited"
+  },
+  "PHONE::+91 20 7157 6403": {
+    "type": "PHONE",
+    "real": "+91 20 7157 6403",
+    "fake": "+91 7481503336"
+  },
+  "EMAIL::anand.soni@bajajfinserv.in": {
+    "type": "EMAIL",
+    "real": "anand.soni@bajajfinserv.in",
+    "fake": "dixie_bins@example.com"
+  },
+  "ADDRESS::bandra kurla complex, bandra (e) mumbai – 400 051, maharashtra, india": {
+    "type": "ADDRESS",
+    "real": "bandra kurla complex, bandra (e) mumbai – 400 051, maharashtra, india",
+    "fake": "4854 Irma Orchard, Quintencester"
+  }
+}
