@@ -11,12 +11,21 @@
  *     re-match text already tagged as PII.
  *  3. Run a KNOWN-ENTITY pass (optional, document-level): a first read-only
  *     scan over the whole document collects every NAME/COMPANY the context
- *     rules above are confident about. A second pass then also matches
- *     exact repeats of those confirmed entities even where they appear
- *     with NO surrounding context — e.g. a person's name sitting alone in
- *     a table cell, with the role word ("Promoter") in a separate cell.
- *     Context-only detection misses these; the known-entity pass catches
- *     them because the entity was already proven real elsewhere in the doc.
+ *     rules above are confident about — including SHORTENED forms of a
+ *     multi-word name (first+last, surname alone), since real documents
+ *     refer to a person by their full name once and a shortened form
+ *     afterward (e.g. "Kushal Subbayya Hegde" the first time, then just
+ *     "Hegde" or "Kushal Hegde" later). A second pass then also matches
+ *     exact repeats of those confirmed entities — including the shortened
+ *     forms — even where they appear with NO surrounding context, e.g. a
+ *     person's name sitting alone in a table cell, with the role word
+ *     ("Promoter") in a separate cell. Context-only detection misses
+ *     these; the known-entity pass catches them because the entity was
+ *     already proven real elsewhere in the doc.
+ *     TRADEOFF: matching a bare surname raises false-positive risk very
+ *     slightly if that exact word ever appears unrelated to the person
+ *     elsewhere in the document. For a specific, uncommon surname this
+ *     risk is low; documented here and in the README.
  *  4. Every detected value is replaced with a FAKE value, but the same
  *     real value always maps to the same fake value (a running Map),
  *     so "Rashi Patil" -> "John Doe" everywhere, not a new name each time.
@@ -373,12 +382,14 @@ function detectAddresses(text, existingSpans) {
 // 5. Known-entity pass (document-level, two-pass redaction)
 //    Pass 1 (collectKnownEntities): read-only scan over EVERY block's text,
 //    using the context detectors above, to build a confirmed set of real
-//    names/companies.
+//    names/companies — including shortened forms of multi-word names
+//    (first+last, surname alone), since later mentions of a person often
+//    drop the middle name or use just the surname.
 //    Pass 2 (detectKnownMatches): re-scan each block and also match exact
-//    repeats of those confirmed entities, even with zero context — this is
-//    what catches a name sitting alone in a table cell whose role word
-//    ("Promoter") lives in a separate cell the context regexes never see
-//    together.
+//    repeats of those confirmed entities (including shortened forms), even
+//    with zero context — this is what catches a name sitting alone in a
+//    table cell whose role word ("Promoter") lives in a separate cell the
+//    context regexes never see together.
 // -----------------------------------------------------------------
 function escapeRegex(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -389,7 +400,23 @@ export function collectKnownEntities(blockTexts) {
   const companies = new Set();
   for (const text of blockTexts) {
     for (const span of detectAll(text)) {
-      if (span.type === "NAME") names.add(span.value.trim());
+      if (span.type === "NAME") {
+        const value = span.value.trim();
+        names.add(value);
+
+        // Also learn shortened forms of a multi-word name, since later
+        // mentions in the document often drop the middle name or use just
+        // the surname (e.g. "Kushal Subbayya Hegde" -> later referred to
+        // as "Kushal Hegde" or just "Hegde"). TRADEOFF: a bare surname
+        // carries a small false-positive risk if that exact word appears
+        // unrelated to the person elsewhere — acceptable for a specific,
+        // uncommon surname; documented in README.
+        const words = value.split(/\s+/);
+        if (words.length >= 3) {
+          names.add(`${words[0]} ${words[words.length - 1]}`); // first + last
+          names.add(words[words.length - 1]); // surname alone
+        }
+      }
       if (span.type === "COMPANY") companies.add(span.value.trim());
     }
   }
@@ -399,7 +426,7 @@ export function collectKnownEntities(blockTexts) {
 function detectKnownMatches(text, knownEntities, existingSpans) {
   const spans = [];
   const tryMatch = (values, type) => {
-    // Longest first, so "Kushal Subbayya Hegde" matches before bare "Kushal"
+    // Longest first, so "Kushal Subbayya Hegde" matches before bare "Hegde"
     const sorted = [...values].sort((a, b) => b.length - a.length);
     for (const value of sorted) {
       if (!value || value.length < 4) continue;
