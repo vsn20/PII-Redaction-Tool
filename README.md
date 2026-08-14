@@ -1,5 +1,5 @@
 # PII Redaction Tool
-**Live demo:** https://pii-redaction-hxijlsfxp-vsn20s-projects.vercel.app/
+**Live demo:** https://pii-redaction-tool-xi.vercel.app/
 (Upload a .docx file to redact it directly in the browser — see `app/` and
 `app/api/redact/route.js` for the web wrapper around the same detection
 logic described below.)
@@ -197,30 +197,41 @@ types don't naturally appear in an Indian securities prospectus.)
 
 ## Project structure
 
-```
-pii-redaction-tool/
-├── package.json
-├── README.md
-├── config.js              # PII regex patterns, keyword lists, settings
-├── redactor.js             # Detection logic + fake-value replacement engine
-├── docxHandler.js          # .docx <-> structured blocks <-> redacted .docx
-├── main.js                 # CLI entrypoint
-├── evaluate.js              # Precision/recall/F1 scorer
+pii-redaction-web/
+├── app/
+│   ├── api/
+│   │   └── redact/
+│   │       └── route.js      # API route: receives uploaded .docx, runs the
+│   │                          # same detection/redaction pipeline, returns
+│   │                          # the redacted .docx as a download
+│   └── (page.js / layout.js) # Frontend upload UI
+├── config.js                 # PII regex patterns, keyword lists, settings
+├── redactor.js                # Detection logic + fake-value replacement engine
+├── docxHandler.js             # .docx <-> structured blocks <-> redacted .docx
+├── main.js                    # CLI entrypoint (still usable directly via `node main.js`)
+├── evaluate.js                 # Precision/recall/F1 scorer
 ├── data/
-│   ├── input/               # Source .docx goes here
+│   ├── input/                  # Source .docx for CLI runs
 │   └── test-set/
 │       └── ground-truth.json
 ├── output/
-│   ├── *_REDACTED.docx      # Deliverable
+│   ├── *_REDACTED.docx         # Deliverable (CLI runs)
 │   └── redaction-mapping.json  # Real->fake audit log (QA only)
-└── reports/
-    └── evaluation-report.md
-```
-
+├── reports/
+│   └── evaluation-report.md
+├── public/                     # Next.js static assets
+├── next.config.mjs
+├── jsconfig.json
+├── package.json
+└── README.md
 ## Usage
 
 ```
 npm install
 node main.js --input data/input/Red_Herring_Prospectus.docx --output output/Red_Herring_Prospectus_REDACTED.docx
 node evaluate
+
+### Web app
+Visit the live demo, upload a .docx, and download the redacted file directly — no install needed.
+Or run locally: `npm run dev`, then open http://localhost:3000
 ```
