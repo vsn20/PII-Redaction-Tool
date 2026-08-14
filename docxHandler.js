@@ -8,9 +8,9 @@
  *     Word file (raw word/document.xml has runs split unpredictably).
  *  2. node-html-parser walks that HTML into a simple array of "blocks"
  *     (paragraph, heading, list item, table).
- *  3. Each block's text is passed through redactor.js, using ONE shared
- *     PIIMapping so the same real value -> same fake value everywhere
- *     in the document.
+ *  3. redactBlocks() runs a TWO-PASS redaction over those blocks (see
+ *     comment on redactBlocks below), using ONE shared PIIMapping so the
+ *     same real value -> same fake value everywhere in the document.
  *  4. The `docx` (docx-js) library rebuilds a new .docx from the
  *     redacted blocks.
  *
@@ -35,7 +35,7 @@ import {
   WidthType,
   LevelFormat,
 } from "docx";
-import { redactText } from "./redactor.js";
+import { redactText, collectKnownEntities } from "./redactor.js";
 
 // -----------------------------------------------------------------
 // 1. Load .docx -> HTML
@@ -82,19 +82,49 @@ function htmlToBlocks(html) {
 // -----------------------------------------------------------------
 // 3. Redact all text within blocks (in place), using one shared mapping
 //    so entities are consistent document-wide.
+//
+//    TWO-PASS REDACTION:
+//    Pass 1 (collectKnownEntities): a read-only scan over EVERY block's
+//    text (including every table cell) using the context-based detectors
+//    in redactor.js, to build a confirmed set of real names/companies
+//    found anywhere in the document.
+//    Pass 2 (redactText with knownEntities): re-scan each block and match
+//    BOTH the context rules AND exact repeats of those confirmed entities.
+//    This is what catches a name sitting alone in a table cell with no
+//    role word in that same cell (e.g. a "Name" column and a "Designation"
+//    column are different cells/strings — the context regexes never see
+//    them together, but the known-entity pass does, because that name was
+//    already proven real elsewhere in the document, e.g. the very first
+//    time it appeared next to "Promoter" or "Director").
 // -----------------------------------------------------------------
+function collectAllBlockTexts(blocks) {
+  const texts = [];
+  for (const block of blocks) {
+    if (block.type === "heading" || block.type === "paragraph" || block.type === "listItem") {
+      texts.push(block.text);
+    } else if (block.type === "table") {
+      for (const row of block.rows) for (const cell of row) texts.push(cell);
+    }
+  }
+  return texts;
+}
+
 function redactBlocks(blocks, mapping) {
   let totalSpans = 0;
 
+  // Pass 1: read-only scan to learn every real name/company in the document
+  const knownEntities = collectKnownEntities(collectAllBlockTexts(blocks));
+
+  // Pass 2: redact using both context rules AND the known-entity set
   for (const block of blocks) {
     if (block.type === "heading" || block.type === "paragraph" || block.type === "listItem") {
-      const { redacted, spans } = redactText(block.text, mapping);
+      const { redacted, spans } = redactText(block.text, mapping, knownEntities);
       block.text = redacted;
       totalSpans += spans.length;
     } else if (block.type === "table") {
       block.rows = block.rows.map((row) =>
         row.map((cellText) => {
-          const { redacted, spans } = redactText(cellText, mapping);
+          const { redacted, spans } = redactText(cellText, mapping, knownEntities);
           totalSpans += spans.length;
           return redacted;
         })
@@ -202,7 +232,7 @@ async function writeRedactedDocx(blocks, outputPath) {
 }
 
 // -----------------------------------------------------------------
-// Public entrypoint used by main.js
+// Public entrypoint used by main.js (CLI)
 // -----------------------------------------------------------------
 export async function redactDocx(inputPath, outputPath, mapping) {
   const html = await docxToHtml(inputPath);
@@ -211,6 +241,7 @@ export async function redactDocx(inputPath, outputPath, mapping) {
   await writeRedactedDocx(blocks, outputPath);
   return { blockCount: blocks.length, spanCount };
 }
+
 // -----------------------------------------------------------------
 // Buffer-based entrypoint for serverless/web use (no disk I/O).
 // Mirrors redactDocx() above but takes/returns Buffers directly,

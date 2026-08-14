@@ -9,7 +9,15 @@
  *     remaining, not-yet-redacted text — these are lower-precision by
  *     nature (no ML/NER available offline), so they run after and never
  *     re-match text already tagged as PII.
- *  3. Every detected value is replaced with a FAKE value, but the same
+ *  3. Run a KNOWN-ENTITY pass (optional, document-level): a first read-only
+ *     scan over the whole document collects every NAME/COMPANY the context
+ *     rules above are confident about. A second pass then also matches
+ *     exact repeats of those confirmed entities even where they appear
+ *     with NO surrounding context — e.g. a person's name sitting alone in
+ *     a table cell, with the role word ("Promoter") in a separate cell.
+ *     Context-only detection misses these; the known-entity pass catches
+ *     them because the entity was already proven real elsewhere in the doc.
+ *  4. Every detected value is replaced with a FAKE value, but the same
  *     real value always maps to the same fake value (a running Map),
  *     so "Rashi Patil" -> "John Doe" everywhere, not a new name each time.
  *
@@ -132,7 +140,7 @@ function detectRegexPII(text) {
     let match;
     regex.lastIndex = 0;
     while ((match = regex.exec(text)) !== null) {
-      // DOB now captures the date in group 1 (the cue word like "Date of
+      // DOB may capture the date in group 1 (a cue word like "Date of
       // Birth:" is part of match[0] but should NOT itself be redacted).
       const isGroupedDob = type === "DOB" && match[1];
       let value = isGroupedDob ? match[1] : match[0];
@@ -167,9 +175,12 @@ function detectRegexPII(text) {
 
 // -----------------------------------------------------------------
 // 2. Heuristic: full names
-//    Trigger: a title (Mr./Ms./Dr./Shri/Smt.) followed by 1-3
-//    capitalized words, OR a capitalized 2-3 word sequence immediately
-//    following a role cue word (Director, Promoter, Secretary, Signed by...).
+//    Four trigger patterns, since real documents use all of them:
+//    (a) ROLE-FIRST, title: "Mr. Rajesh Sharma"
+//    (b) ROLE-FIRST, role cue: "Director: Kushal Hegde"
+//    (c) NAME-FIRST, inline role: table row "Kushal Hegde   Promoter   1,528.00"
+//    (d) NAME-FIRST, list header: "OUR PROMOTERS: KUSHAL HEGDE, PUSHPA HEGDE, ..."
+//    Matches BOTH Title Case and ALL CAPS, since this document uses both.
 //    This is a precision/recall tradeoff — documented in README.
 // -----------------------------------------------------------------
 const NAME_ROLE_CUES = [
@@ -177,6 +188,20 @@ const NAME_ROLE_CUES = [
   "Signed by", "Signature of", "Chief Financial Officer", "Managing Director",
   "Chairman", "Whole-time Director", "Contact Person",
 ];
+
+// Words that can follow a name inline, table-row style
+const TRAILING_ROLE_WORDS = ["Promoter", "Director", "Selling", "Chairman", "Secretary"];
+
+// Headers that introduce a comma-separated list of names
+const NAME_LIST_HEADERS = [
+  "OUR PROMOTERS", "PROMOTERS", "OUR DIRECTORS", "DIRECTORS",
+  "BOARD OF DIRECTORS", "KEY MANAGERIAL PERSONNEL",
+];
+
+// A run of 2-4 capitalized words. Matches Title Case ("Kushal Hegde") AND
+// ALL CAPS ("KUSHAL HEGDE") — a plain [A-Z][a-z]+ pattern would silently
+// miss every ALL CAPS occurrence, which this document uses throughout.
+const CAP_NAME_RUN = "[A-Z][A-Za-z]*(?:\\s+[A-Z][A-Za-z]*){1,3}";
 
 function containsStopword(value) {
   return value
@@ -187,31 +212,72 @@ function containsStopword(value) {
 
 function detectNames(text, existingSpans) {
   const spans = [];
+  const tryAdd = (value, start) => {
+    if (containsStopword(value)) return;
+    const candidate = { type: "NAME", value, start, end: start + value.length };
+    if (
+      !existingSpans.some((s) => overlaps(s, candidate)) &&
+      !spans.some((s) => overlaps(s, candidate))
+    ) {
+      spans.push(candidate);
+    }
+  };
+
+  // --- (a) ROLE-FIRST: title word + name ---
   const titlePattern = new RegExp(
-    `(?:${NAME_TITLES.map((t) => t.replace(".", "\\.")).join("|")})\\s+([A-Z][a-z]+(?:\\s+[A-Z][a-z]+){0,2})`,
+    `(?:${NAME_TITLES.map((t) => t.replace(".", "\\.")).join("|")})\\s+(${CAP_NAME_RUN})`,
     "g"
   );
   let match;
   while ((match = titlePattern.exec(text)) !== null) {
-    if (containsStopword(match[1])) continue;
-    const nameStart = match.index + match[0].indexOf(match[1]);
-    const candidate = { type: "NAME", value: match[1], start: nameStart, end: nameStart + match[1].length };
-    if (!existingSpans.some((s) => overlaps(s, candidate))) spans.push(candidate);
+    tryAdd(match[1], match.index + match[0].indexOf(match[1]));
   }
 
+  // --- (b) ROLE-FIRST: role cue + name ---
   for (const cue of NAME_ROLE_CUES) {
-    const cuePattern = new RegExp(`${cue}\\s*[:\\-]?\\s*([A-Z][a-z]+(?:\\s+[A-Z][a-z]+){1,2})`, "g");
+    const cuePattern = new RegExp(`${cue}\\s*[:\\-]?\\s*(${CAP_NAME_RUN})`, "g");
     while ((match = cuePattern.exec(text)) !== null) {
-      if (containsStopword(match[1])) continue;
-      const nameStart = match.index + match[0].lastIndexOf(match[1]);
-      const candidate = { type: "NAME", value: match[1], start: nameStart, end: nameStart + match[1].length };
-      if (!existingSpans.some((s) => overlaps(s, candidate)) && !spans.some((s) => overlaps(s, candidate))) {
-        spans.push(candidate);
+      tryAdd(match[1], match.index + match[0].lastIndexOf(match[1]));
+    }
+  }
+
+  // --- (c) NAME-FIRST: name immediately followed by a role word (table rows) ---
+  const trailingPattern = new RegExp(
+    `(${CAP_NAME_RUN})\\s+(?:${TRAILING_ROLE_WORDS.join("|")})\\b`,
+    "g"
+  );
+  while ((match = trailingPattern.exec(text)) !== null) {
+    tryAdd(match[1], match.index);
+  }
+
+  // --- (d) NAME-FIRST: comma-separated list after a list header ---
+  for (const header of NAME_LIST_HEADERS) {
+    const headerPattern = new RegExp(`${header}\\s*:?\\s*([\\s\\S]{0,400})`, "g");
+    while ((match = headerPattern.exec(text)) !== null) {
+      const listText = match[1];
+      const listStart = match.index + match[0].indexOf(listText);
+      const items = listText.split(",");
+      let cursor = 0;
+      const nameOnly = new RegExp(`^${CAP_NAME_RUN}$`);
+      for (const item of items) {
+        const trimmed = item.trim();
+        if (nameOnly.test(trimmed) && !/TRUST|LIMITED|PRIVATE|COMPANY/.test(trimmed)) {
+          const itemStart = listStart + cursor + item.indexOf(trimmed);
+          tryAdd(trimmed, itemStart);
+        } else if (!nameOnly.test(trimmed)) {
+          break; // list ended — hit a trust/company entry or unrelated prose
+        }
+        cursor += item.length + 1;
       }
     }
   }
+
   return spans;
 }
+
+// -----------------------------------------------------------------
+// 3. Heuristic: company names
+// -----------------------------------------------------------------
 function isDeterminerOnlyCompany(value) {
   // Rejects "Our Company", "The Company", "Such Limited", etc — a single
   // determiner word followed directly by a generic suffix is a defined-term
@@ -229,10 +295,7 @@ function isDeterminerOnlyCompany(value) {
 
 function isSuffixOnlyCompany(value) {
   // Rejects candidates made entirely of suffix words with nothing else,
-  // e.g. "Private Limited" alone — "Private" satisfies the regex's
-  // leading capitalized-word requirement, "Limited" satisfies the suffix
-  // alternation, so two suffix words next to each other can otherwise
-  // match themselves as if they were a company name.
+  // e.g. "Private Limited" alone.
   const suffixWordsLower = new Set(
     COMPANY_SUFFIXES.flatMap((s) => s.toLowerCase().replace(".", "").split(/\s+/))
   );
@@ -257,15 +320,12 @@ function detectCompanies(text, existingSpans) {
   }
   return spans;
 }
+
 // -----------------------------------------------------------------
 // 4. Heuristic: addresses
-//    Trigger: a line/segment containing a genuine Indian PIN code, OR
-//    2+ narrow address keywords in a short-enough segment.
 //    "Genuine PIN code" = 6 digits immediately preceded by a dash-like
-//    character (as in every real address here: "Pune â€“ 410 501").
-//    Without this check, any unrelated 6-digit number (a registration
-//    number, a peer-review number, etc) was matching PINCODE_PATTERN
-//    and causing false-positive ADDRESS spans.
+//    character (as in every real address here: "Pune – 410 501"),
+//    which avoids false positives on unrelated 6-digit numbers.
 // -----------------------------------------------------------------
 const ADDRESS_MAX_LEN_WITH_PIN = 600;
 const ADDRESS_MAX_LEN_KEYWORDS_ONLY = 300;
@@ -275,14 +335,11 @@ function hasGenuinePincode(seg) {
   let m;
   while ((m = regex.exec(seg)) !== null) {
     const before = seg.slice(0, m.index);
-    // Require the dash to be preceded by whitespace or start-of-segment —
-    // NOT directly attached to a letter (e.g. "M-140388" is a registration
-    // number, not a PIN code; real PIN codes always look like "Pune – 410 501"
-    // with a space before the dash).
     if (/(?:^|\s)(?:[-–—]|â€“)\s{0,2}$/.test(before)) return true;
   }
   return false;
 }
+
 function detectAddresses(text, existingSpans) {
   const spans = [];
   const segments = text.split(/(?<=[.\n])/);
@@ -311,28 +368,81 @@ function detectAddresses(text, existingSpans) {
   }
   return spans;
 }
+
+// -----------------------------------------------------------------
+// 5. Known-entity pass (document-level, two-pass redaction)
+//    Pass 1 (collectKnownEntities): read-only scan over EVERY block's text,
+//    using the context detectors above, to build a confirmed set of real
+//    names/companies.
+//    Pass 2 (detectKnownMatches): re-scan each block and also match exact
+//    repeats of those confirmed entities, even with zero context — this is
+//    what catches a name sitting alone in a table cell whose role word
+//    ("Promoter") lives in a separate cell the context regexes never see
+//    together.
+// -----------------------------------------------------------------
+function escapeRegex(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+export function collectKnownEntities(blockTexts) {
+  const names = new Set();
+  const companies = new Set();
+  for (const text of blockTexts) {
+    for (const span of detectAll(text)) {
+      if (span.type === "NAME") names.add(span.value.trim());
+      if (span.type === "COMPANY") companies.add(span.value.trim());
+    }
+  }
+  return { names, companies };
+}
+
+function detectKnownMatches(text, knownEntities, existingSpans) {
+  const spans = [];
+  const tryMatch = (values, type) => {
+    // Longest first, so "Kushal Subbayya Hegde" matches before bare "Kushal"
+    const sorted = [...values].sort((a, b) => b.length - a.length);
+    for (const value of sorted) {
+      if (!value || value.length < 4) continue;
+      const pattern = new RegExp(`\\b${escapeRegex(value)}\\b`, "gi");
+      let match;
+      while ((match = pattern.exec(text)) !== null) {
+        const candidate = { type, value: match[0], start: match.index, end: match.index + match[0].length };
+        if (
+          !existingSpans.some((s) => overlaps(s, candidate)) &&
+          !spans.some((s) => overlaps(s, candidate))
+        ) {
+          spans.push(candidate);
+        }
+      }
+    }
+  };
+  if (knownEntities?.names) tryMatch(knownEntities.names, "NAME");
+  if (knownEntities?.companies) tryMatch(knownEntities.companies, "COMPANY");
+  return spans;
+}
+
 // -----------------------------------------------------------------
 // Master detector — combines all of the above.
 //
-// ORDER MATTERS: ADDRESS runs FIRST, before NAME/COMPANY. Address
-// candidates are whole-segment spans (an entire sentence), and the
-// segment they claim often also contains a company name or a person's
-// name (e.g. "...our Company, KSH International Limited, at 11/3...
-// Pune – 410501..."). If NAME/COMPANY ran first, their small span
-// would sit inside the address segment and the overlap check would
-// reject the ENTIRE address candidate because of that partial overlap
-// — silently losing the whole address. Running ADDRESS first avoids
-// that: the address claims the full sentence (which already includes
-// and redacts any company/name text within it), and NAME/COMPANY then
-// only look at whatever segments remain.
+// ORDER MATTERS: ADDRESS runs before NAME/COMPANY (address spans are
+// whole-segment and would otherwise get rejected by smaller overlapping
+// name/company spans). The known-entity pass runs LAST, and only if a
+// knownEntities set is explicitly passed in (keeps detectAll usable
+// standalone, e.g. during the pass-1 collection scan itself).
 // -----------------------------------------------------------------
-export function detectAll(text) {
+export function detectAll(text, knownEntities = null) {
   const regexSpans = detectRegexPII(text);
   const addressSpans = detectAddresses(text, regexSpans);
   const nameSpans = detectNames(text, [...regexSpans, ...addressSpans]);
   const companySpans = detectCompanies(text, [...regexSpans, ...addressSpans, ...nameSpans]);
 
-  const all = [...regexSpans, ...addressSpans, ...nameSpans, ...companySpans];
+  let all = [...regexSpans, ...addressSpans, ...nameSpans, ...companySpans];
+
+  if (knownEntities) {
+    const knownSpans = detectKnownMatches(text, knownEntities, all);
+    all = [...all, ...knownSpans];
+  }
+
   all.sort((a, b) => a.start - b.start);
   return all;
 }
@@ -340,8 +450,8 @@ export function detectAll(text) {
 // -----------------------------------------------------------------
 // Apply redaction to a single string, given a shared PIIMapping
 // -----------------------------------------------------------------
-export function redactText(text, mapping) {
-  const spans = detectAll(text);
+export function redactText(text, mapping, knownEntities = null) {
+  const spans = detectAll(text, knownEntities);
   if (spans.length === 0) return { redacted: text, spans };
 
   let result = "";
